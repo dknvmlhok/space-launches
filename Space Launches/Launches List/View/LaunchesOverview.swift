@@ -75,9 +75,11 @@ private extension LaunchesOverview {
 
                 SearchBarView(
                     viewModel: viewModel,
-                    searchValue: $searchValue.onChange { viewModel.send(event: .onSearchBarEdit($0)) },
+                    searchValue: $searchValue.onChange {
+                        viewModel.send(event: .onSearchBarEdit($0))
+                    },
                     isEditing: $onSearchBarTap.onChange(),
-                    viewSize: geometry.size
+                    viewHeight: geometry.size.height
                 )
                 .onTapGesture {
                     onSearchBarTap = true

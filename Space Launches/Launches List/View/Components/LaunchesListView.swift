@@ -35,6 +35,7 @@ extension LaunchesOverview {
                             )
                         )
                         .padding()
+                        .frame(maxWidth: .infinity)
                         .background(Color(.systemGray5))
                         .cornerRadius(25)
                     }

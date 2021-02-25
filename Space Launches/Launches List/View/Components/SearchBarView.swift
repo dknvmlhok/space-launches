@@ -16,7 +16,7 @@ struct SearchBarView: View {
     @Binding var searchValue: String
     @Binding var isEditing: Bool
 
-    let viewSize: CGSize
+    let viewHeight: CGFloat
 
     // MARK: - View Body
 
@@ -75,7 +75,7 @@ struct SearchBarView: View {
                     )
                 }
                 .frame(
-                    minHeight: viewSize.height,
+                    minHeight: viewHeight,
                     maxHeight: .infinity,
                     alignment: .center
                 )

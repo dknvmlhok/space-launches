@@ -43,6 +43,7 @@ struct LaunchesListRow: View {
                         .foregroundColor(.primary)
                 }
             }
+            Spacer()
         }
     }
 }
