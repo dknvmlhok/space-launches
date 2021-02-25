@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct Launch: Codable, Identifiable {
+// MARK: - Domain Object
 
-    let fairings: Fairings
+struct Launch: Identifiable {
+
+    let fairings: Fairings?
     let links: Links
     let staticFireDateUTC: String?
     let staticFireDateUnix: Int?
@@ -38,37 +40,39 @@ struct Launch: Codable, Identifiable {
     let id: String
 }
 
-// MARK: - Coding Keys
+// MARK: - Domain Object Maping
 
-private extension Launch {
+extension LaunchDTO {
 
-    enum CodingKeys: String, CodingKey {
-        case fairings
-        case links
-        case staticFireDateUTC = "static_fire_date_utc"
-        case staticFireDateUnix = "static_fire_date_unix"
-        case tbd
-        case net
-        case window
-        case rocket
-        case success
-        case failures
-        case details
-        case crew
-        case ships
-        case capsules
-        case payloads
-        case launchpad
-        case autoUpdate = "auto_update"
-        case launchLibraryId = "launch_library_id"
-        case flightNumber = "flight_number"
-        case name
-        case dateUTC = "date_utc"
-        case dateUnix = "date_unix"
-        case dateLocal = "date_local"
-        case datePrecision = "date_precision"
-        case upcoming
-        case cores
-        case id
+    var mapToDomain: Launch {
+        .init(
+            fairings: fairings?.mapToDomain,
+            links: links.mapToDomain,
+            staticFireDateUTC: staticFireDateUTC,
+            staticFireDateUnix: staticFireDateUnix,
+            tbd: tbd,
+            net: net,
+            window: window,
+            rocket: rocket,
+            success: success,
+            failures: failures.map { $0.mapToDomain },
+            details: details,
+            crew: crew,
+            ships: ships,
+            capsules: capsules,
+            payloads: payloads,
+            launchpad: launchpad,
+            autoUpdate: autoUpdate,
+            launchLibraryId: launchLibraryId,
+            flightNumber: flightNumber,
+            name: name,
+            dateUTC: dateUTC,
+            dateUnix: dateUnix,
+            dateLocal: dateLocal,
+            datePrecision: datePrecision.mapToDomain,
+            upcoming: upcoming,
+            cores: cores.map { $0.mapToDomain },
+            id: id
+        )
     }
 }

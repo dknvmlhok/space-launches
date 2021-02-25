@@ -7,9 +7,11 @@
 
 import Foundation
 
+// MARK: - Domain Object
+
 extension Launch {
     
-    struct Links: Codable {
+    struct Links {
         let patch: Patch
         let reddit: Reddit
         let flickr: Flickr
@@ -23,36 +25,70 @@ extension Launch {
 
 extension Launch.Links {
 
-    struct Patch: Codable {
+    struct Patch {
         let small: URL?
         let large: URL?
     }
 
-    struct Reddit: Codable {
+    struct Reddit {
         let campaign: URL?
         let launch: URL?
         let media: URL?
         let recovery: URL?
     }
 
-    struct Flickr: Codable {
+    struct Flickr {
         let small: [URL]
         let original: [URL]
     }
 }
 
-// MARK: - Coding Keys
+// MARK: - Domain Object Maping
 
-private extension Launch.Links {
+extension LaunchDTO.LinksDTO {
 
-    enum CodingKeys: String, CodingKey {
-        case patch
-        case reddit
-        case flickr
-        case presskit
-        case webcast
-        case youtubeId = "youtube_id"
-        case article
-        case wikipedia
+    var mapToDomain: Launch.Links {
+        .init(
+            patch: patch.mapToDomain,
+            reddit: reddit.mapToDomain,
+            flickr: flickr.mapToDomain,
+            presskit: presskit,
+            webcast: webcast,
+            youtubeId: youtubeId,
+            article: article,
+            wikipedia: wikipedia
+        )
+    }
+}
+
+extension LaunchDTO.LinksDTO.PatchDTO {
+
+    var mapToDomain: Launch.Links.Patch {
+        .init(
+            small: small,
+            large: large
+        )
+    }
+}
+
+extension LaunchDTO.LinksDTO.RedditDTO {
+
+    var mapToDomain: Launch.Links.Reddit {
+        .init(
+            campaign: campaign,
+            launch: launch,
+            media: media,
+            recovery: recovery
+        )
+    }
+}
+
+extension LaunchDTO.LinksDTO.FlickrDTO {
+
+    var mapToDomain: Launch.Links.Flickr {
+        .init(
+            small: small,
+            original: original
+        )
     }
 }

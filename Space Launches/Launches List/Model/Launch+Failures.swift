@@ -7,11 +7,26 @@
 
 import Foundation
 
+// MARK: - Domain Object
+
 extension Launch {
 
-    struct Failures: Codable {
+    struct Failures {
         let time: Int
         let altitude: Int?
         let reason: String
+    }
+}
+
+// MARK: - Domain Object Maping
+
+extension LaunchDTO.FailuresDTO {
+
+    var mapToDomain: Launch.Failures {
+        .init(
+            time: time,
+            altitude: altitude,
+            reason: reason
+        )
     }
 }

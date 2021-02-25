@@ -7,9 +7,11 @@
 
 import Foundation
 
+// MARK: - Domain Object
+
 extension Launch {
 
-    struct Fairings: Codable {
+    struct Fairings {
         let reused: Bool?
         let recoveryAttempt: Bool?
         let recovered: Bool?
@@ -17,14 +19,16 @@ extension Launch {
     }
 }
 
-// MARK: - Coding Keys
+// MARK: - Domain Object Maping
 
-private extension Launch.Fairings {
+extension LaunchDTO.FairingsDTO {
 
-    enum CodingKeys: String, CodingKey {
-        case reused
-        case recoveryAttempt = "recovery_attempt"
-        case recovered
-        case ships
+    var mapToDomain: Launch.Fairings {
+        .init(
+            reused: reused,
+            recoveryAttempt: recoveryAttempt,
+            recovered: recovered,
+            ships: ships
+        )
     }
 }
