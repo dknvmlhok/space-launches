@@ -23,6 +23,7 @@ struct RefreshButtonView: View {
                 angle += 360
                 viewModel.send(event: .onRefresh)
             }
+            .padding(.vertical)
             .rotationEffect(.degrees(angle))
             .animation(.linear)
     }

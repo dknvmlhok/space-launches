@@ -44,12 +44,14 @@ struct SearchBarView: View {
                                     label: {
                                         Image(systemName: "multiply.circle.fill")
                                             .foregroundColor(.gray)
+                                            .padding(.vertical)
                                             .padding(.trailing, 6)
                                     }
                                 )
                             }
                         }
                     )
+                    .autocapitalization(.none)
                     .disableAutocorrection(true)
 
                 if isEditing {
