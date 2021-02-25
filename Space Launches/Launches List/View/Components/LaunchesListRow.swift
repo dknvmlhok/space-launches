@@ -17,9 +17,19 @@ struct LaunchesListRow: View {
     // MARK: - View Body
 
     var body: some View {
+
+        let cacheableImage = getCacheableImage(
+            from: launch.links.patch.small,
+            of: CGSize(
+                width:
+                    imageSize.width,
+                height: imageSize.height
+            ),
+            placeholderImage: UIImage(named: "rocket")!
+        )
+
         HStack(alignment: .center) {
-            Image(systemName: "photo")
-                .resizable()
+            cacheableImage
                 .frame(
                     width: imageSize.width,
                     height: imageSize.height,
