@@ -8,23 +8,24 @@
 import Foundation
 import Combine
 
-final class PastLaunchesDataProvider {
-
-}
-
-extension PastLaunchesDataProvider: PastLaunchesDataProviderType {
+final class PastLaunchesDataProvider: PastLaunchesDataProviderType {
 
     var getPastLaunches: AnyPublisher<[Launch], NetworkError> {
-        let launchSubject = CurrentValueSubject<[Launch], Error>([Launch.mock])
-
-        return launchSubject
+        API.pastLaunches
             .mapError { error in
                 switch error {
                 case is URLError:
-                    return NetworkError.urlUnreachable(URL(string: "")!)
+                    guard let errorURL = error.asAFError?.url else {
+                        return NetworkError.urlUnreachable(nil)
+                    }
+
+                    return NetworkError.urlUnreachable(errorURL.absoluteString)
                 default:
                     return NetworkError.invalidResponse(error)
                 }
+            }
+            .map {
+                $0.map { $0.mapToDomain }
             }
             .eraseToAnyPublisher()
     }

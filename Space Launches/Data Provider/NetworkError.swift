@@ -10,17 +10,16 @@ import Foundation
 enum NetworkError: Identifiable, LocalizedError {
     var id: String { localizedDescription }
     
-    case urlUnreachable(URL)
+    case urlUnreachable(String?)
     case invalidResponse(Error)
 
     var errorDescription: String? {
         switch self {
         case .urlUnreachable(let url):
-            print("\n***\n Requested URL is unreachable: \(url) \n***")
+            print("\n❌ Requested URL is unreachable. \(url ?? "")\n")
             return "unreachable requested URL"
-        case .invalidResponse:
-            #warning("TODO: print status codes")
-            print("\n***\n Server response is invalid. Status code: \n***")
+        case .invalidResponse(let error):
+            print("\n❌ \(error.localizedDescription). Status code: \(error.asAFError?.responseCode ?? 0)\n")
             return "invalid server response"
         }
     }
