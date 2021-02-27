@@ -48,7 +48,6 @@
 		B461759325D84AEC00FE3662 /* PastLaunchesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B461759225D84AEC00FE3662 /* PastLaunchesDataProvider.swift */; };
 		B461759825D84B7D00FE3662 /* PastLaunchesDataProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B461759725D84B7D00FE3662 /* PastLaunchesDataProviderType.swift */; };
 		B461759B25D84BD800FE3662 /* DataServicesResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B461759A25D84BD800FE3662 /* DataServicesResolver.swift */; };
-		B46175A125D8654C00FE3662 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46175A025D8654C00FE3662 /* NetworkError.swift */; };
 		B4969C3A25E6FC9C000523AB /* LaunchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C3925E6FC9C000523AB /* LaunchDTO.swift */; };
 		B4969C3F25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C3E25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift */; };
 		B4969C4225E6FD57000523AB /* LaunchDTO+LinksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C4125E6FD57000523AB /* LaunchDTO+LinksDTO.swift */; };
@@ -56,6 +55,8 @@
 		B4969C4B25E6FE94000523AB /* LaunchDTO+CoresDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C4A25E6FE94000523AB /* LaunchDTO+CoresDTO.swift */; };
 		B4969C5125E70992000523AB /* LaunchDTO+DatePrecisionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C5025E70992000523AB /* LaunchDTO+DatePrecisionDTO.swift */; };
 		B4969C5A25E84DA0000523AB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B4969C5925E84DA0000523AB /* Kingfisher */; };
+		B4969C6125E9C3BD000523AB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C6025E9C3BD000523AB /* NetworkError.swift */; };
+		B4969C6625E9CA2D000523AB /* WebServiceAgentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969C6525E9CA2D000523AB /* WebServiceAgentError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,13 +121,14 @@
 		B461759225D84AEC00FE3662 /* PastLaunchesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastLaunchesDataProvider.swift; sourceTree = "<group>"; };
 		B461759725D84B7D00FE3662 /* PastLaunchesDataProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastLaunchesDataProviderType.swift; sourceTree = "<group>"; };
 		B461759A25D84BD800FE3662 /* DataServicesResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServicesResolver.swift; sourceTree = "<group>"; };
-		B46175A025D8654C00FE3662 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B4969C3925E6FC9C000523AB /* LaunchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDTO.swift; sourceTree = "<group>"; };
 		B4969C3E25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchDTO+FairingsDTO.swift"; sourceTree = "<group>"; };
 		B4969C4125E6FD57000523AB /* LaunchDTO+LinksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchDTO+LinksDTO.swift"; sourceTree = "<group>"; };
 		B4969C4425E6FE15000523AB /* LaunchDTO+FailuresDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchDTO+FailuresDTO.swift"; sourceTree = "<group>"; };
 		B4969C4A25E6FE94000523AB /* LaunchDTO+CoresDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchDTO+CoresDTO.swift"; sourceTree = "<group>"; };
 		B4969C5025E70992000523AB /* LaunchDTO+DatePrecisionDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LaunchDTO+DatePrecisionDTO.swift"; sourceTree = "<group>"; };
+		B4969C6025E9C3BD000523AB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B4969C6525E9CA2D000523AB /* WebServiceAgentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceAgentError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			children = (
 				B45BB07325E58BC500228F1D /* API.swift */,
 				B45BB07825E5909500228F1D /* WebServiceAgent.swift */,
+				B4969C6525E9CA2D000523AB /* WebServiceAgentError.swift */,
 				B4969C3825E6FC8E000523AB /* DTO */,
 			);
 			path = API;
@@ -341,8 +344,8 @@
 		B461759125D84ADC00FE3662 /* Data Provider */ = {
 			isa = PBXGroup;
 			children = (
+				B4969C6025E9C3BD000523AB /* NetworkError.swift */,
 				B461759F25D8653500FE3662 /* Past Launches */,
-				B46175A025D8654C00FE3662 /* NetworkError.swift */,
 			);
 			path = "Data Provider";
 			sourceTree = "<group>";
@@ -485,12 +488,12 @@
 				B461759B25D84BD800FE3662 /* DataServicesResolver.swift in Sources */,
 				B45BB06525E45AB500228F1D /* LaunchesListView.swift in Sources */,
 				B461756025D7DA8700FE3662 /* Launch+Fairings.swift in Sources */,
+				B4969C6625E9CA2D000523AB /* WebServiceAgentError.swift in Sources */,
 				B45BB04C25E27CF800228F1D /* SectionHeader.swift in Sources */,
 				B4969C5125E70992000523AB /* LaunchDTO+DatePrecisionDTO.swift in Sources */,
 				B45BB07425E58BC600228F1D /* API.swift in Sources */,
 				B461756F25D8095900FE3662 /* Launch+Cores.swift in Sources */,
 				B45BB01125DF165100228F1D /* SearchBarView.swift in Sources */,
-				B46175A125D8654C00FE3662 /* NetworkError.swift in Sources */,
 				B45BB05625E2A41F00228F1D /* LaunchesOverviewFeedback.swift in Sources */,
 				B4969C4225E6FD57000523AB /* LaunchDTO+LinksDTO.swift in Sources */,
 				B45BAFEE25DB13F300228F1D /* SceneDelegate.swift in Sources */,
@@ -513,6 +516,7 @@
 				B461756C25D807BF00FE3662 /* Launch+DatePrecision.swift in Sources */,
 				B461750A25D5CB1F00FE3662 /* LaunchesOverview.swift in Sources */,
 				B4969C3F25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift in Sources */,
+				B4969C6125E9C3BD000523AB /* NetworkError.swift in Sources */,
 				B45BB03E25E2757E00228F1D /* SpinnerView.swift in Sources */,
 				B45BB07925E5909500228F1D /* WebServiceAgent.swift in Sources */,
 			);
