@@ -11,12 +11,28 @@ import Alamofire
 
 struct WebServiceAgent {
 
-    func run<T: Decodable>(_ url: URLConvertible) -> AnyPublisher<[T], Error> {
-        AF.request(url, method: .get)
-            .publishData()
-            .compactMap { $0.data }
-            .decode(type: [T].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    private let networkManager = NetworkReachabilityManager()
+
+    func run<T: Decodable>(_ url: URLConvertible) -> AnyPublisher<[T], WebServiceAgentError> {
+
+        if networkManager?.isReachable ?? false {
+
+            return AF.request(url, method: .get)
+                .publishData()
+                .compactMap { $0.data }
+                .decode(type: [T].self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .mapError { error in
+                    switch error.asAFError {
+                    case .invalidURL(url: let url):
+                        return .urlUnreachable(try? url.asURL())
+                    default:
+                        return .invalidServerResponse
+                    }
+                }
+                .eraseToAnyPublisher()
+        }
+
+        return .init(Fail(error: WebServiceAgentError.noInternetConnection))
     }
 }
