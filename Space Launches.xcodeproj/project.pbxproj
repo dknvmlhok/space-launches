@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D4B340B25EA2CC000FB0AC7 /* LocaleStorage+StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B340A25EA2CC000FB0AC7 /* LocaleStorage+StorageKeys.swift */; };
+		9D4B340E25EA2E8200FB0AC7 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B340D25EA2E8200FB0AC7 /* LocalStorage.swift */; };
 		B40A345325D48371002D5911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B40A345225D48371002D5911 /* Assets.xcassets */; };
 		B40A345625D48371002D5911 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B40A345525D48371002D5911 /* Preview Assets.xcassets */; };
 		B40A346125D48372002D5911 /* Space_LaunchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A346025D48372002D5911 /* Space_LaunchesTests.swift */; };
@@ -83,6 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D4B340A25EA2CC000FB0AC7 /* LocaleStorage+StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocaleStorage+StorageKeys.swift"; sourceTree = "<group>"; };
+		9D4B340D25EA2E8200FB0AC7 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		B40A344B25D4836E002D5911 /* Space Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40A345225D48371002D5911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B40A345525D48371002D5911 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -152,6 +156,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D4B341025EA2EEE00FB0AC7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B45BB07225E58BB700228F1D /* API */,
+				B461759125D84ADC00FE3662 /* Storage */,
+				B461753225D5D50C00FE3662 /* DI */,
+				B45BAFFF25DDA6B900228F1D /* Utils */,
+				B45BB01825E1269D00228F1D /* Kits */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9D4B341125EA2F7900FB0AC7 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				B461759225D84AEC00FE3662 /* PastLaunchesDataProvider.swift */,
+				B461759725D84B7D00FE3662 /* PastLaunchesDataProviderType.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		9D4B341225EA2F8F00FB0AC7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B461755A25D7D6B100FE3662 /* Launch.swift */,
+				B461755F25D7DA8700FE3662 /* Launch+Fairings.swift */,
+				B461756225D7DB0600FE3662 /* Launch+Links.swift */,
+				B461756825D8024E00FE3662 /* Launch+Failures.swift */,
+				B461756B25D807BF00FE3662 /* Launch+DatePrecision.swift */,
+				B461756E25D8095900FE3662 /* Launch+Cores.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		B40A344225D4836E002D5911 = {
 			isa = PBXGroup;
 			children = (
@@ -177,11 +215,7 @@
 			children = (
 				B461750225D5CA4C00FE3662 /* App */,
 				B461750025D5C9D900FE3662 /* Launches List */,
-				B461759125D84ADC00FE3662 /* Data Provider */,
-				B45BB07225E58BB700228F1D /* API */,
-				B461753225D5D50C00FE3662 /* DI */,
-				B45BAFFF25DDA6B900228F1D /* Utils */,
-				B45BB01825E1269D00228F1D /* Kits */,
+				9D4B341025EA2EEE00FB0AC7 /* Common */,
 				B40A348F25D48599002D5911 /* Supporting Files */,
 				B40A348E25D48592002D5911 /* Resources */,
 				B40A345425D48371002D5911 /* Preview Content */,
@@ -304,12 +338,8 @@
 		B461752525D5D31200FE3662 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B461755A25D7D6B100FE3662 /* Launch.swift */,
-				B461755F25D7DA8700FE3662 /* Launch+Fairings.swift */,
-				B461756225D7DB0600FE3662 /* Launch+Links.swift */,
-				B461756825D8024E00FE3662 /* Launch+Failures.swift */,
-				B461756B25D807BF00FE3662 /* Launch+DatePrecision.swift */,
-				B461756E25D8095900FE3662 /* Launch+Cores.swift */,
+				9D4B341225EA2F8F00FB0AC7 /* Entities */,
+				9D4B341125EA2F7900FB0AC7 /* DataProvider */,
 				B461757425D80CE200FE3662 /* Mocks */,
 			);
 			path = Model;
@@ -341,27 +371,19 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		B461759125D84ADC00FE3662 /* Data Provider */ = {
+		B461759125D84ADC00FE3662 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				B4969C6025E9C3BD000523AB /* NetworkError.swift */,
-				B461759F25D8653500FE3662 /* Past Launches */,
+				9D4B340D25EA2E8200FB0AC7 /* LocalStorage.swift */,
+				9D4B340A25EA2CC000FB0AC7 /* LocaleStorage+StorageKeys.swift */,
 			);
-			path = "Data Provider";
-			sourceTree = "<group>";
-		};
-		B461759F25D8653500FE3662 /* Past Launches */ = {
-			isa = PBXGroup;
-			children = (
-				B461759225D84AEC00FE3662 /* PastLaunchesDataProvider.swift */,
-				B461759725D84B7D00FE3662 /* PastLaunchesDataProviderType.swift */,
-			);
-			path = "Past Launches";
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		B4969C3825E6FC8E000523AB /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				B4969C6025E9C3BD000523AB /* NetworkError.swift */,
 				B4969C3925E6FC9C000523AB /* LaunchDTO.swift */,
 				B4969C3E25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift */,
 				B4969C4125E6FD57000523AB /* LaunchDTO+LinksDTO.swift */,
@@ -487,6 +509,7 @@
 				B45BB04725E27C7200228F1D /* View+Ext.swift in Sources */,
 				B461759B25D84BD800FE3662 /* DataServicesResolver.swift in Sources */,
 				B45BB06525E45AB500228F1D /* LaunchesListView.swift in Sources */,
+				9D4B340E25EA2E8200FB0AC7 /* LocalStorage.swift in Sources */,
 				B461756025D7DA8700FE3662 /* Launch+Fairings.swift in Sources */,
 				B4969C6625E9CA2D000523AB /* WebServiceAgentError.swift in Sources */,
 				B45BB04C25E27CF800228F1D /* SectionHeader.swift in Sources */,
@@ -497,6 +520,7 @@
 				B45BB05625E2A41F00228F1D /* LaunchesOverviewFeedback.swift in Sources */,
 				B4969C4225E6FD57000523AB /* LaunchDTO+LinksDTO.swift in Sources */,
 				B45BAFEE25DB13F300228F1D /* SceneDelegate.swift in Sources */,
+				9D4B340B25EA2CC000FB0AC7 /* LocaleStorage+StorageKeys.swift in Sources */,
 				B4969C3A25E6FC9C000523AB /* LaunchDTO.swift in Sources */,
 				B45BAFE725D97B6000228F1D /* LaunchesListRow.swift in Sources */,
 				B461759325D84AEC00FE3662 /* PastLaunchesDataProvider.swift in Sources */,
