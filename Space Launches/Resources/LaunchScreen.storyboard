@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npz-1O-wKX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="str-0R-d7g">
+            <objects>
+                <viewController id="Npz-1O-wKX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IQh-Vv-vbv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBt-GG-kS1">
+                                <rect key="frame" x="0.0" y="54" width="600" height="492"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Space Launches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ih-77-VUF">
+                                        <rect key="frame" x="179" y="8" width="243" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="rocket" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-lr-30i">
+                                        <rect key="frame" x="-69" y="118" width="738" height="381"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="381" id="ENU-sV-Y7r"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Hsf-lr-30i" firstAttribute="centerY" secondItem="WBt-GG-kS1" secondAttribute="centerY" id="LXF-ts-bc9"/>
+                                    <constraint firstItem="0ih-77-VUF" firstAttribute="centerX" secondItem="WBt-GG-kS1" secondAttribute="centerX" id="PR9-OH-QEu"/>
+                                    <constraint firstItem="Hsf-lr-30i" firstAttribute="centerX" secondItem="WBt-GG-kS1" secondAttribute="centerX" id="c8c-KP-I2X"/>
+                                    <constraint firstItem="Hsf-lr-30i" firstAttribute="leading" secondItem="WBt-GG-kS1" secondAttribute="leading" constant="-68.666666666666686" id="feQ-dX-fMZ"/>
+                                    <constraint firstItem="0ih-77-VUF" firstAttribute="top" secondItem="WBt-GG-kS1" secondAttribute="top" constant="8" id="rg9-hc-0L3"/>
+                                    <constraint firstItem="Hsf-lr-30i" firstAttribute="top" secondItem="0ih-77-VUF" secondAttribute="bottom" constant="69" id="tQN-Xn-1IP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NWh-d5-OLu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WBt-GG-kS1" firstAttribute="centerX" secondItem="IQh-Vv-vbv" secondAttribute="centerX" id="2Gt-0D-j0W"/>
+                            <constraint firstItem="WBt-GG-kS1" firstAttribute="top" secondItem="NWh-d5-OLu" secondAttribute="top" constant="54" id="NFw-sZ-lGT"/>
+                            <constraint firstItem="WBt-GG-kS1" firstAttribute="centerY" secondItem="IQh-Vv-vbv" secondAttribute="centerY" id="ThB-xP-0FT"/>
+                            <constraint firstAttribute="trailing" secondItem="WBt-GG-kS1" secondAttribute="trailing" id="WGx-T3-r5e"/>
+                            <constraint firstItem="WBt-GG-kS1" firstAttribute="leading" secondItem="IQh-Vv-vbv" secondAttribute="leading" id="glM-4v-YB3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QeX-hg-j35" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="93.842364532019715"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="rocket" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
