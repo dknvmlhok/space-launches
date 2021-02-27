@@ -29,7 +29,7 @@ struct LaunchesOverviewFeedback {
         case onRefresh
     }
 
-    enum SortType {
+    enum SortType: String {
         case byName
         case byDate
     }

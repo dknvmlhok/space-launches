@@ -20,11 +20,12 @@ final class LaunchesOverviewViewModel: ObservableObject {
 
     @Injected var dataProvider: PastLaunchesDataProviderType
     @Published var overviewState = OverviewState.idle
-    @Published var searchState = SearchState .idle
+    @Published var searchState = SearchState.idle
 
     private var event = PassthroughSubject<Event, Never>()
     private var cancellables = Set<AnyCancellable>()
 
+    private let localStorage = LocalStorage()
     private var loadedLaunches = [Launch]()
 
     // MARK: - Initialization
@@ -80,8 +81,20 @@ private extension LaunchesOverviewViewModel {
                     self?.overviewState = .error(error)
                 },
                 receiveValue: { [weak self] launches in
-                    self?.overviewState = .loaded(launches)
-                    self?.loadedLaunches = launches
+                    guard let self = self else { return }
+
+                    self.overviewState = .loaded(launches)
+                    self.loadedLaunches = launches
+
+                    guard
+                        let storedValue = self.localStorage
+                            .getValue(forKey: self.localStorage.storageKeys.sort) as? String,
+                        let sortMethod = SortType(rawValue: storedValue)
+                    else {
+                        return
+                    }
+
+                    self.sortList(by: sortMethod)
                 }
             )
             .store(in: &cancellables)
@@ -89,11 +102,14 @@ private extension LaunchesOverviewViewModel {
 
     func sortList(by type: SortType) {
         var launches = loadedLaunches
+        let storageKey = localStorage.storageKeys.sort
 
         switch type {
         case .byName:
             launches.sort { $0.name < $1.name }
+
             overviewState = .loaded(launches)
+            localStorage.set(value: "byName", forKey: storageKey)
         case .byDate:
             launches.sort {
                     let formattedDateA = DateFormatter.formateStringToDate(from: $0.dateLocal)
@@ -103,6 +119,7 @@ private extension LaunchesOverviewViewModel {
                 }
 
             overviewState = .loaded(launches)
+            localStorage.set(value: "byDate", forKey: storageKey)
         }
     }
 
