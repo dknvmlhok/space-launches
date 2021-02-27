@@ -17,7 +17,7 @@ enum API {
         static let pastLaunches = "/launches/past"
     }
 
-    static var pastLaunches: AnyPublisher<[LaunchDTO], Error> {
+    static var pastLaunches: AnyPublisher<[LaunchDTO], WebServiceAgentError> {
         let url = URL(string: base + Endpoint.pastLaunches)!
 
         return webServiceAgent.run(url)
