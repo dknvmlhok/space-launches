@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Data Objects
 
 extension LaunchDTO {
-
+    
     struct LinksDTO: Decodable {
         let patch: PatchDTO
         let reddit: RedditDTO
@@ -24,19 +24,19 @@ extension LaunchDTO {
 }
 
 extension LaunchDTO.LinksDTO {
-
+    
     struct PatchDTO: Decodable {
         let small: URL?
         let large: URL?
     }
-
+    
     struct RedditDTO: Decodable {
         let campaign: URL?
         let launch: URL?
         let media: URL?
         let recovery: URL?
     }
-
+    
     struct FlickrDTO: Decodable {
         let small: [URL]
         let original: [URL]
@@ -46,7 +46,7 @@ extension LaunchDTO.LinksDTO {
 // MARK: - Coding Keys
 
 private extension LaunchDTO.LinksDTO {
-
+    
     enum CodingKeys: String, CodingKey {
         case patch
         case reddit

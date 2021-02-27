@@ -112,11 +112,11 @@ private extension LaunchesOverviewViewModel {
             localStorage.set(value: "byName", forKey: storageKey)
         case .byDate:
             launches.sort {
-                    let formattedDateA = DateFormatter.formateStringToDate(from: $0.dateLocal)
-                    let formattedDateB = DateFormatter.formateStringToDate(from: $1.dateLocal)
+                let formattedDateA = DateFormatter.formateStringToDate(from: $0.dateLocal)
+                let formattedDateB = DateFormatter.formateStringToDate(from: $1.dateLocal)
 
-                    return formattedDateA.compare(formattedDateB) == .orderedDescending
-                }
+                return formattedDateA.compare(formattedDateB) == .orderedDescending
+            }
 
             overviewState = .loaded(launches)
             localStorage.set(value: "byDate", forKey: storageKey)

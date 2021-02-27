@@ -9,6 +9,9 @@ import SwiftUI
 
 extension Binding {
     /// Updates value of @Binding property wrapper when value changes and optionally performs completion.
+    ///
+    /// - Parameters:
+    ///   - completion
     func onChange(_ completion: ((Value) -> Void)? = nil) -> Binding<Value> {
         Binding(
             get: { self.wrappedValue },

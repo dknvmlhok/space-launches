@@ -9,6 +9,11 @@ import Foundation
 
 extension DateFormatter {
 
+    /// Formates date string to Date
+    ///
+    /// - Parameters:
+    ///   - format: date ISO format. Default format is "yyyy-MM-dd'T'HH:mm:ssZ"
+    ///   - isoString: Date ISO format string to convert from
     static func formateStringToDate(
         with format: String = "yyyy-MM-dd'T'HH:mm:ssZ",
         from isoString: String)
@@ -23,6 +28,10 @@ extension DateFormatter {
         return convertedToDate
     }
 
+    /// Formates Date ISO format string to human readable formate
+    ///
+    /// - Parameters:
+    ///   - isoString: Date ISO format string to convert from
     static func formateLocaleDate(from isoString: String) -> String {
         let date = formateStringToDate(from: isoString)
         let dateFormatter = DateFormatter()

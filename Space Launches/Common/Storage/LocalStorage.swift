@@ -10,12 +10,14 @@ import Foundation
 struct LocalStorage {
     let storageKeys = StorageKeys()
 
+    private let storage = UserDefaults.standard
+
     func set<T>(value: T, forKey key: String) {
-        UserDefaults.standard.set(value, forKey: key)
+        storage.set(value, forKey: key)
     }
 
     func getValue(forKey key: String) -> Any? {
-        UserDefaults.standard.value(forKey: key)
+        storage.value(forKey: key)
     }
 
 }

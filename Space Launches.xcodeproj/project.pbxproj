@@ -160,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B45BB07225E58BB700228F1D /* API */,
+				9D4B341925EA400300FB0AC7 /* DataProvider */,
 				B461759125D84ADC00FE3662 /* Storage */,
 				B461753225D5D50C00FE3662 /* DI */,
 				B45BAFFF25DDA6B900228F1D /* Utils */,
@@ -180,6 +181,7 @@
 		9D4B341225EA2F8F00FB0AC7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9D4B341B25EA407C00FB0AC7 /* Mocks */,
 				B461755A25D7D6B100FE3662 /* Launch.swift */,
 				B461755F25D7DA8700FE3662 /* Launch+Fairings.swift */,
 				B461756225D7DB0600FE3662 /* Launch+Links.swift */,
@@ -188,6 +190,23 @@
 				B461756E25D8095900FE3662 /* Launch+Cores.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		9D4B341925EA400300FB0AC7 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				B4969C3825E6FC8E000523AB /* DTO */,
+				B4969C6025E9C3BD000523AB /* NetworkError.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		9D4B341B25EA407C00FB0AC7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B461757125D80CD900FE3662 /* Launch+Mock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		B40A344225D4836E002D5911 = {
@@ -302,7 +321,6 @@
 				B45BB07325E58BC500228F1D /* API.swift */,
 				B45BB07825E5909500228F1D /* WebServiceAgent.swift */,
 				B4969C6525E9CA2D000523AB /* WebServiceAgentError.swift */,
-				B4969C3825E6FC8E000523AB /* DTO */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -329,8 +347,8 @@
 		B461752425D5D30700FE3662 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B461750925D5CB1F00FE3662 /* LaunchesOverview.swift */,
 				B45BB06725E45ABF00228F1D /* Components */,
+				B461750925D5CB1F00FE3662 /* LaunchesOverview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +358,6 @@
 			children = (
 				9D4B341225EA2F8F00FB0AC7 /* Entities */,
 				9D4B341125EA2F7900FB0AC7 /* DataProvider */,
-				B461757425D80CE200FE3662 /* Mocks */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,14 +380,6 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		B461757425D80CE200FE3662 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				B461757125D80CD900FE3662 /* Launch+Mock.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 		B461759125D84ADC00FE3662 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,7 +392,6 @@
 		B4969C3825E6FC8E000523AB /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				B4969C6025E9C3BD000523AB /* NetworkError.swift */,
 				B4969C3925E6FC9C000523AB /* LaunchDTO.swift */,
 				B4969C3E25E6FD00000523AB /* LaunchDTO+FairingsDTO.swift */,
 				B4969C4125E6FD57000523AB /* LaunchDTO+LinksDTO.swift */,

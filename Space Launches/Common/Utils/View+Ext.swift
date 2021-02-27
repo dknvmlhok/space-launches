@@ -10,14 +10,22 @@ import Kingfisher
 
 extension View {
 
+    /// Converts View to AnyView
     func eraseToAnyView() -> AnyView {
         AnyView(self)
     }
 
+    /// Hides system keyboard
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
+    /// Fetches Image from URL and caches appropriately
+    ///
+    /// - Parameters:
+    ///   - url: URL to fetch image from
+    ///   - size: Preferred Image CGSize
+    ///   - placeholderImage: Placeholder image to set before data from URL is loaded
     func getCacheableImage(
         from url: URL?,
         of size: CGSize,

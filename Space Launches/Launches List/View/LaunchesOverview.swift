@@ -90,7 +90,7 @@ private extension LaunchesOverview {
                         .padding(.horizontal)
                 }
             }
-       }
+        }
     }
 
     var content: some View {

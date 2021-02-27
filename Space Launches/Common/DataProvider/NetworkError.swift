@@ -13,7 +13,6 @@ enum NetworkError: Identifiable, LocalizedError {
     var id: String { localizedDescription }
 
     var errorDescription: String? {
-
         switch self {
         case .webServiceAgentError(let error):
             switch error {
