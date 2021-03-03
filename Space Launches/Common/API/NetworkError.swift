@@ -25,6 +25,9 @@ enum NetworkError: Identifiable, LocalizedError {
             case .noInternetConnection:
                 print("\n❌ No internet connection\n")
                 return "no internet connection"
+            case .timeout:
+                print("\n❌ Timeout")
+                return "data request timeout"
             }
         }
     }
