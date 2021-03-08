@@ -11,7 +11,8 @@ struct RefreshButtonView: View {
 
     // MARK: - Properties
 
-    @ObservedObject var viewModel: LaunchesOverviewViewModel
+    var viewModel: ViewModelType
+
     @State private var angle: Double = 0
 
     // MARK: - View Body
@@ -23,7 +24,7 @@ struct RefreshButtonView: View {
                 angle += 360
                 viewModel.send(event: .onRefresh)
             }
-            .padding(.vertical)
+            .contentShape(Rectangle()) // to increase tapable area
             .rotationEffect(.degrees(angle))
             .animation(.linear)
     }
@@ -33,7 +34,7 @@ struct RefreshButtonView: View {
 
 #if DEBUG
 struct RefreshButtonView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         RefreshButtonView(viewModel: LaunchesOverviewViewModel())
     }

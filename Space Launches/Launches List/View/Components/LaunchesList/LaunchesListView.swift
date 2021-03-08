@@ -9,7 +9,7 @@ import SwiftUI
 
 extension LaunchesOverview {
 
-    struct LaunchesList: View {
+    struct LaunchesListView: View {
 
         // MARK: - Properties
 
@@ -24,11 +24,11 @@ extension LaunchesOverview {
         // MARK: - View Body
 
         var body: some View {
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                Section(header: ListSectionHeader(text: Loca.launchesList.listSectionHeader)) {
-                    ForEach(launches, id: \.id) {
+            LazyVStack {
+                Section(header: LaunchesListSectionHeader(text: Loca.launchesList.LaunchesListSectionHeader.uppercased())) {
+                    ForEach(launches, id: \.id) { launch in
                         LaunchesListRow(
-                            launch: $0,
+                            launch: launch,
                             imageSize: (
                                 width: 100,
                                 height: 100
@@ -37,10 +37,11 @@ extension LaunchesOverview {
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color(.systemGray5))
-                        .cornerRadius(25)
+                        .cornerRadius(10)
                     }
                 }
             }
+            .animation(nil)
         }
     }
 }
@@ -51,7 +52,7 @@ extension LaunchesOverview {
 struct LaunchesList_Previews: PreviewProvider {
 
     static var previews: some View {
-        LaunchesOverview.LaunchesList([Launch.mock])
+        LaunchesOverview.LaunchesListView([Launch.mock])
     }
 }
 #endif

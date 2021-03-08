@@ -11,4 +11,5 @@ enum WebServiceAgentError: Error {
     case urlUnreachable(URL?)
     case noInternetConnection
     case invalidServerResponse
+    case timeout
 }

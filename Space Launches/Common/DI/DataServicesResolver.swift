@@ -15,5 +15,11 @@ extension Resolver {
 
         register { PastLaunchesDataProvider() }
             .implements(PastLaunchesDataProviderType.self)
+
+        // MARK: Past Launch Detail
+
+        register { PastLaunchDetailDataProvider() }
+            .implements(PastLaunchDetailDataProviderType.self)
+            
     }
 }

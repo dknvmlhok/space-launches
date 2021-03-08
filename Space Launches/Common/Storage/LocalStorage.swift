@@ -19,5 +19,4 @@ struct LocalStorage {
     func getValue(forKey key: String) -> Any? {
         storage.value(forKey: key)
     }
-
 }

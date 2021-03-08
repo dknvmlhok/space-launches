@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storing of selected sort methods to `User Defaults`
 - Fetching of launches from API using `Alamofire` library
 - Fetching of cacheable images using `KingFisher` library
+- Added `LaunchDetail` screen with endpoint `pastLaunch`
+- Refactored `SearchNavigationView` to native `UISearchBar`
+- Added some view enhancements for `LaunchesOverview`
 
 ### Changed
 

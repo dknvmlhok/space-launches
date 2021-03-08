@@ -11,16 +11,16 @@ import Resolver
 
 final class LaunchesOverviewViewModel: ObservableObject {
 
-    typealias OverviewState = LaunchesOverviewFeedback.OverviewState
-    typealias SearchState = LaunchesOverviewFeedback.SearchState
-    typealias Event = LaunchesOverviewFeedback.Event
-    typealias SortType = LaunchesOverviewFeedback.SortType
+    // MARK: - TypeAliases
+
+    typealias OverviewState = UIFeedbacks.OverviewState
+    typealias Event = UIFeedbacks.Event
+    typealias SortType = UIFeedbacks.SortType
 
     // MARK: - Properties
 
     @Injected var dataProvider: PastLaunchesDataProviderType
     @Published var overviewState = OverviewState.idle
-    @Published var searchState = SearchState.idle
 
     private var event = PassthroughSubject<Event, Never>()
     private var cancellables = Set<AnyCancellable>()
@@ -33,8 +33,11 @@ final class LaunchesOverviewViewModel: ObservableObject {
     init() {
         handleEvents()
     }
+}
 
-    // MARK: - Methods
+// MARK: - ViewModelType
+
+extension LaunchesOverviewViewModel: ViewModelType {
 
     func send(event: Event) {
         self.event.send(event)
@@ -57,6 +60,9 @@ private extension LaunchesOverviewViewModel {
                     self.sortList(by: type)
                 case .onSearchBarEdit(let text):
                     self.searchResults(by: text)
+                case .onSearchBarEndEditing:
+                    guard let sortMethod = self.storedSortMethod else { return }
+                    self.sortList(by: sortMethod)
                 case .onRefresh:
                     self.loadData()
                 }
@@ -86,14 +92,7 @@ private extension LaunchesOverviewViewModel {
                     self.overviewState = .loaded(launches)
                     self.loadedLaunches = launches
 
-                    guard
-                        let storedValue = self.localStorage
-                            .getValue(forKey: self.localStorage.storageKeys.sort) as? String,
-                        let sortMethod = SortType(rawValue: storedValue)
-                    else {
-                        return
-                    }
-
+                    guard let sortMethod = self.storedSortMethod else { return }
                     self.sortList(by: sortMethod)
                 }
             )
@@ -108,8 +107,8 @@ private extension LaunchesOverviewViewModel {
         case .byName:
             launches.sort { $0.name < $1.name }
 
-            overviewState = .loaded(launches)
             localStorage.set(value: "byName", forKey: storageKey)
+            overviewState = .loaded(launches)
         case .byDate:
             launches.sort {
                 let formattedDateA = DateFormatter.formateStringToDate(from: $0.dateLocal)
@@ -118,9 +117,20 @@ private extension LaunchesOverviewViewModel {
                 return formattedDateA.compare(formattedDateB) == .orderedDescending
             }
 
-            overviewState = .loaded(launches)
             localStorage.set(value: "byDate", forKey: storageKey)
+            overviewState = .loaded(launches)
         }
+    }
+
+    var storedSortMethod: SortType? {
+        guard
+            let storedValue = self.localStorage.getValue(forKey: self.localStorage.storageKeys.sort) as? String,
+            let sortMethod = SortType(rawValue: storedValue)
+        else {
+            return nil
+        }
+
+        return sortMethod
     }
 
     func searchResults(by text: String) {
@@ -136,6 +146,6 @@ private extension LaunchesOverviewViewModel {
             return filteredByNameOrDate
         }
 
-        searchState = .loaded(results)
+        overviewState = .loaded(results)
     }
 }

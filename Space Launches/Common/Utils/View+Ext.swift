@@ -11,7 +11,7 @@ import Kingfisher
 extension View {
 
     /// Converts View to AnyView
-    func eraseToAnyView() -> AnyView {
+    var eraseToAnyView: AnyView {
         AnyView(self)
     }
 
@@ -29,11 +29,11 @@ extension View {
     func getCacheableImage(
         from url: URL?,
         of size: CGSize,
-        placeholderImage: UIImage
+        placeholderImage: UIImage = UIImage(named: "rocket")!
     ) -> KFImage {
         KFImage(url)
             .placeholder {
-                Image(uiImage: UIImage(named: "rocket")!)
+                Image(uiImage: placeholderImage)
                     .resizable()
                     .renderingMode(.template)
                     .foregroundColor(.white)
@@ -46,7 +46,6 @@ extension View {
             .downsampling(size: size)
             .retry(maxCount: 3, interval: .seconds(5))
             .cacheOriginalImage()
-            .fade(duration: 0.25)
             .resizable()
     }
 }
