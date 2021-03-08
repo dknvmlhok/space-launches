@@ -18,6 +18,23 @@ extension Launch {
         case month
         case day
         case hour
+
+        var localized: String {
+            switch self {
+            case .half:
+                return Loca.dates.half
+            case .quarter:
+                return Loca.dates.quarter
+            case .year:
+                return Loca.dates.year
+            case .month:
+                return Loca.dates.month
+            case .day:
+                return Loca.dates.day
+            case .hour:
+                return Loca.dates.hour
+            }
+        }
     }
 }
 
