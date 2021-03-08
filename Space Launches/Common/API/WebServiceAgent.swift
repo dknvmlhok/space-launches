@@ -31,7 +31,7 @@ struct WebServiceAgent {
                         return .invalidServerResponse
                     }
                 }
-                .timeout(.seconds(5), scheduler: DispatchQueue.main, customError: { .timeout })
+                .timeout(.seconds(15), scheduler: DispatchQueue.main, customError: { .timeout })
                 .eraseToAnyPublisher()
         }
 
