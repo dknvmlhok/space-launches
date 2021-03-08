@@ -11,7 +11,7 @@ import Foundation
 
 extension Launch {
 
-    struct Failures {
+    struct Failures: Hashable {
         let time: Int
         let altitude: Int?
         let reason: String
