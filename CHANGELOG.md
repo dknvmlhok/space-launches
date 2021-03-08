@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## [1.0.0] - 2021-08-02
+
+### Added
 - Project setup
 - `LaunchScreen.storyboard`
 - Dependency injection using `Resolver` library
@@ -19,10 +29,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `LaunchDetail` screen with endpoint `pastLaunch`
 - Refactored `SearchNavigationView` to native `UISearchBar`
 - Added some view enhancements for `LaunchesOverview`
-
-### Changed
-
-### Removed
-
-### Fixed
-
