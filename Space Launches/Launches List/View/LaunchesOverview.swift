@@ -14,14 +14,17 @@ struct LaunchesOverview: View {
     @ObservedObject var viewModel: LaunchesOverviewViewModel
 
     @State private var onSortButtonTap = false
-    @State private var onSearchBarTap = false
     @State private var searchValue = ""
+    @State private var launches = [Launch]()
 
     // MARK: - View Body
 
     var body: some View {
-        NavigationView {
-            content
+        SearchNavigationView(
+            viewModel: viewModel,
+            searchValue: $searchValue
+        ) {
+            listContent
                 .navigationBarTitle(Loca.launchesList.navigationBarTitle)
                 .navigationBarItems(
                     leading: RefreshButtonView(viewModel: viewModel),
@@ -30,15 +33,14 @@ struct LaunchesOverview: View {
                     }
                 )
                 .navigationViewStyle(StackNavigationViewStyle())
-                .navigationBarHidden(onSearchBarTap)
                 .actionSheet(isPresented: $onSortButtonTap) {
                     ActionSheet(
-                        title: Text(Loca.sort.title),
+                        title: Text(Loca.launchesList.sort.title),
                         buttons: [
-                            .default(Text(Loca.sort.sortByName)) {
+                            .default(Text(Loca.launchesList.sort.sortByName)) {
                                 viewModel.send(event: .onSelectSortType(.byName))
                             },
-                            .default(Text(Loca.sort.sortByDate)) {
+                            .default(Text(Loca.launchesList.sort.sortByDate)) {
                                 viewModel.send(event: .onSelectSortType(.byDate))
                             },
                             .cancel()
@@ -57,7 +59,10 @@ struct LaunchesOverview: View {
                         dismissButton: .cancel(Text(Loca.general.ok))
                     )
                 }
+
         }
+        .gesture(DragGesture().onChanged { _ in hideKeyboard() }) // Hides keyboard on scroll
+        .ignoresSafeArea()
     }
 }
 
@@ -65,42 +70,23 @@ struct LaunchesOverview: View {
 
 private extension LaunchesOverview {
 
-    func generateContent(with launches: [Launch]) -> some View {
-        GeometryReader { geometry in
-            ScrollView {
-
-                if onSearchBarTap {
-                    Spacer()
-                }
-
-                SearchBarView(
-                    viewModel: viewModel,
-                    searchValue: $searchValue.onChange {
-                        viewModel.send(event: .onSearchBarEdit($0))
-                    },
-                    isEditing: $onSearchBarTap.onChange(),
-                    viewHeight: geometry.size.height
-                )
-                .onTapGesture {
-                    onSearchBarTap = true
-                }
-
-                if !onSearchBarTap {
-                    LaunchesList(launches)
-                        .padding(.horizontal)
-                }
-            }
+    func generateListContent(with launches: [Launch]) -> some View {
+        ScrollView {
+            LaunchesListView(launches)
+                .padding(.horizontal)
         }
+        .transition(.move(edge: .top))
+        .animation(.linear(duration: 0.2))
     }
 
-    var content: some View {
+    var listContent: some View {
         switch viewModel.overviewState {
         case .loading:
-            return SpinnerView().eraseToAnyView()
+            return SpinnerView().eraseToAnyView
         case .loaded(let launches):
-            return generateContent(with: launches).eraseToAnyView()
+            return generateListContent(with: launches).eraseToAnyView
         default:
-            return Color.clear.eraseToAnyView()
+            return Color.clear.eraseToAnyView
         }
     }
 }
